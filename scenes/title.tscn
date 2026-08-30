@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://bj258ymyv4aaf"]
+
+[ext_resource type="Texture2D" uid="uid://d1opyctncn4bs" path="res://textures/jancen/1.png" id="1_pyl7j"]
+[ext_resource type="Texture2D" uid="uid://7aufqnibsnea" path="res://textures/jancen/2.png" id="2_b3w7a"]
+[ext_resource type="Texture2D" uid="uid://c3cu1o04u7k40" path="res://textures/jancen/3.png" id="3_4rr2b"]
+[ext_resource type="Texture2D" uid="uid://cvhu4macy6yor" path="res://textures/jancen/4.png" id="4_yql1r"]
+[ext_resource type="Script" uid="uid://88owqdjdl78m" path="res://scripts/jancen_menu_twitch.gd" id="5_b3w7a"]
+[ext_resource type="Shader" uid="uid://d3f8x7axinufs" path="res://remove black.gdshader" id="6_81wt4"]
+[ext_resource type="Texture2D" uid="uid://d3p11wdn5io82" path="res://textures/static/12.png" id="7_kcc3o"]
+[ext_resource type="Texture2D" uid="uid://nmxpjrebnboh" path="res://textures/static/13.png" id="8_6rcc6"]
+[ext_resource type="Texture2D" uid="uid://bytmpe55xlukh" path="res://textures/static/14.png" id="9_ah8jo"]
+[ext_resource type="Texture2D" uid="uid://bbmple7vprsd1" path="res://textures/static/15.png" id="10_blk4q"]
+[ext_resource type="Texture2D" uid="uid://2rcopao24bxa" path="res://textures/static/16.png" id="11_8magm"]
+[ext_resource type="Texture2D" uid="uid://dkxfp6o5uhuhm" path="res://textures/static/17.png" id="12_fgbvm"]
+[ext_resource type="Texture2D" uid="uid://cprapuavquycg" path="res://textures/static/18.png" id="13_vjr5h"]
+[ext_resource type="Texture2D" uid="uid://dshlopqj4a3d3" path="res://textures/static/20.png" id="14_pmcd8"]
+[ext_resource type="Script" uid="uid://cgq7uaohyyi4d" path="res://scripts/menu button.gd" id="15_kcc3o"]
+[ext_resource type="AudioStream" uid="uid://b787no30ayyx0" path="res://audio/darkness music.wav" id="16_ah8jo"]
+[ext_resource type="AudioStream" uid="uid://cne645h3gdimy" path="res://audio/blip3.wav" id="16_blk4q"]
+[ext_resource type="AudioStream" uid="uid://p6di2i0wm883" path="res://audio/static.wav" id="17_blk4q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ia1n6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pyl7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b3w7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4rr2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yql1r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e75f2"]
+shader = ExtResource("6_81wt4")
+shader_parameter/threshold = 0.4
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtvjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_kcc3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6rcc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ah8jo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_blk4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8magm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fgbvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vjr5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pmcd8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
+
+[node name="title" type="Node2D" unique_id=1941277447]
+
+[node name="background" type="CanvasLayer" parent="." unique_id=2094374654]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="background" unique_id=1225522141]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Jancen Menu" type="AnimatedSprite2D" parent="." unique_id=121578261]
+sprite_frames = SubResource("SpriteFrames_ia1n6")
+centered = false
+script = ExtResource("5_b3w7a")
+
+[node name="rest" type="Timer" parent="Jancen Menu" unique_id=1875750951]
+one_shot = true
+
+[node name="twitch" type="Timer" parent="Jancen Menu" unique_id=2133150893]
+one_shot = true
+
+[node name="static" type="AnimatedSprite2D" parent="." unique_id=1316288389]
+material = SubResource("ShaderMaterial_e75f2")
+sprite_frames = SubResource("SpriteFrames_wtvjo")
+autoplay = "default"
+frame = 3
+frame_progress = 0.96565974
+centered = false
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=1857049195]
+
+[node name="title" type="Label" parent="GUI" unique_id=1933225657]
+offset_right = 540.0
+offset_bottom = 259.0
+theme_override_font_sizes/font_size = 100
+text = "DONT
+REDEEM I.T"
+
+[node name="continue" type="Label" parent="GUI" unique_id=233361594]
+offset_left = 167.0
+offset_top = 430.0
+offset_right = 423.0
+offset_bottom = 546.0
+mouse_filter = 0
+theme_override_font_sizes/font_size = 60
+text = "continue"
+script = ExtResource("15_kcc3o")
+
+[node name="new game" type="Label" parent="GUI" unique_id=162184135]
+offset_left = 149.0
+offset_top = 337.0
+offset_right = 515.0
+offset_bottom = 453.0
+mouse_filter = 0
+theme_override_font_sizes/font_size = 60
+text = "new game"
+script = ExtResource("15_kcc3o")
+
+[node name="arrow" type="Label" parent="GUI" unique_id=546040954]
+offset_left = 50.0
+offset_top = 344.0
+offset_right = 539.0
+offset_bottom = 460.0
+theme_override_font_sizes/font_size = 60
+text = ">>                      <<"
+
+[node name="select" type="AudioStreamPlayer2D" parent="GUI" unique_id=985022755]
+stream = ExtResource("16_blk4q")
+
+[node name="music" type="AudioStreamPlayer2D" parent="." unique_id=828154384]
+stream = ExtResource("16_ah8jo")
+autoplay = true
+
+[node name="static audio" type="AudioStreamPlayer2D" parent="." unique_id=1197870481]
+stream = ExtResource("17_blk4q")
+autoplay = true
